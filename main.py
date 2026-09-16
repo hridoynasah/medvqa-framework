@@ -49,6 +49,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--smoke-test", action="store_true", help="Use deterministic mock data and a small model")
     parser.add_argument("--dataset-id", default=None, help="Override the Hugging Face dataset identifier")
     parser.add_argument("--image-root", default=None, help="Local image directory for datasets storing image IDs/references")
+    parser.add_argument("--image-cache-dir", default=None, help="Cache directory for remote dataset image references")
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--batch-size", type=int, default=16)
@@ -105,6 +106,7 @@ def _run_setting(
         max_answer_candidates=args.max_answer_candidates,
         max_samples=args.max_samples,
         image_root=args.image_root,
+        image_cache_dir=args.image_cache_dir,
     )
     completed: Dict[str, Any] = {}
     aggregate_rows: List[Dict[str, Any]] = []
